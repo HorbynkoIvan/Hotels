@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body{
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.app{
+    max-width: 700px;
+    width: 100%;
+    margin: 40px auto;
+}
+
+.header{
+    font-family: Gabriola, cursive;
+    font-size: 42px;
+    text-align: center;
+    width: 100%;
+}
+
+.hotels-list{
+    display: flex;
+    justify-content: space-between;/*tems are evenly distributed in the line;
+                                     first item is on the start line, last item on the end line*/
+    flex-wrap: wrap;/*flex items will wrap onto multiple lines, from top to bottom.*/
+    margin-top: 16px;
+    margin-bottom: 16px;
+    width: 100%;
+}
+/*hotel card*/
+.hotel-card{
+    width: 100%;
+    max-width: 320px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.hotel-image{
+    max-width: 100%;
+}
+
+.hotel-title{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.hotel-description{
+    margin-top: 0px;
+    margin-bottom: 8px;
+}
+
+.hotel-book{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.hotel-book-link{
+    text-decoration: none;
+    padding: 3px 12px;
+    background-color: #FFC107;
+    color: white;
+    border-radius: 4px;
+}
+.hotel-book-link:hover{
+    background-color: #FFCA28;
+}
+.hotel-price{
+    font-weight: 600;
+}
+/*hotel card end*/
+
+/*search*/
+.search-bar{
+    width: 100%;
+    position: relative;
+}
+
+.search-icon{
+    font-size:32px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.search-input{
+    width: 100%;
+    padding-top: 16px;
+    padding-left: 50px;
+    padding-bottom: 16px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 18px;
+}

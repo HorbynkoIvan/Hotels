@@ -1,8 +1,8 @@
-/**
- * Created by Ivan on 10.06.2017.
- */
-import React from 'react';
-import HotelCard from "HotelCard";
+import React, {Component} from 'react';
+import HotelCard from './HotelCard';
+import Search from './Search';
+import "../css/style.css"
+
 const hotels = [
     {
         id: 3993887,
@@ -45,15 +45,45 @@ const hotels = [
     }
 ];
 
-const HotelApp = React.createClass({
+class HotelApp extends Component {
+    constructor(props) {
+        super(props);
+        //задаем дефолтное значение для search.
+        this.state = {
+            search: ''
+        };
+    };
+
+    handleSearch(e) {
+        console.log(e.target.value)
+    };
+
     render() {
-        const hotelCards =main.map()
+
+        let hotelCard = hotels.map(hotel=>
+            <HotelCard
+                key={hotel.id}
+                name={hotel.name}
+                id={hotel.id}
+                description={hotel.description}
+                price={hotel.price}
+                image={hotel.image}
+                url={hotel.url}
+            />
+        );
         return (
-            <div>
-                <h1>Hotels</h1>
+            <div className="app">
+                <div className="header">Hotel Look</div>
+                <Search 
+                    onSearch={this.handleSearch}
+
+                />
+                <div className="hotels-list">
+                    {hotelCard}
+                </div>
             </div>
         )
     }
-});
-
+}
+;
 export default HotelApp;
