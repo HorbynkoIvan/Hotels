@@ -3,7 +3,7 @@ import HotelCard from './HotelCard';
 import Search from './Search';
 import "../css/style.css"
 
-const hotels = [
+const HOTELS = [
     {
         id: 3993887,
         name: "Romantic Cabana with view",
@@ -38,7 +38,8 @@ const hotels = [
     }, {
         id: 1083329,
         name: "Amazing view - Moderne apartment",
-        description: "Contact the owner",
+        description: " Three apartments, architectural house in north Iceland. " +
+        "This is one of the apartments in Villa Lola, located in Vaðlaheiði near Akureyri, the capital of north Iceland.",
         price: 4991,
         image: "https://a0.muscache.com/im/pictures/25624825/6ef8e934_original.jpg?aki_policy=large",
         url: "https://ru.airbnb.com/rooms/1083329"
@@ -50,17 +51,26 @@ class HotelApp extends Component {
         super(props);
         //задаем дефолтное значение для search.
         this.state = {
+            displayedHotels: HOTELS,
             search: ''
         };
+        this.handleSearch = this.handleSearch.bind(this);
     };
 
     handleSearch(e) {
-        console.log(e.target.value)
+        const searchQuery = e.target.value.toLowerCase();
+        
+        const displayedHotels = HOTELS.filter(hotel=> {
+            const searchString = hotel.name.toLowerCase() + hotel.description.toLocaleLowerCase();
+            return searchString.indexOf(searchQuery) !== -1;
+        });
+
+        this.setState({displayedHotels});
     };
 
     render() {
 
-        let hotelCard = hotels.map(hotel=>
+        let hotelCard = this.state.displayedHotels.map(hotel=>
             <HotelCard
                 key={hotel.id}
                 name={hotel.name}
@@ -74,7 +84,7 @@ class HotelApp extends Component {
         return (
             <div className="app">
                 <div className="header">Hotel Look</div>
-                <Search 
+                <Search
                     onSearch={this.handleSearch}
 
                 />
